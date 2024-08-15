@@ -1,16 +1,16 @@
-export async function authenticateUser(name: string) {
+export const authenticateUser = async (name: string) => {
     try {
-        const response = await fetch("http://localhost:3000/api/user-http", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ name })
-        });
-        
-        if (!response.ok) {
-            throw new Error('Login failed');
-        }
+        const response = await fetch(
+            "http://192.168.0.103:3000/api/user-http",
+            {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name })
+            }
+        );
         const token = await response.text();
         return token;
     } catch (error) {
