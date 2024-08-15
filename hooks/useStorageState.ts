@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import { Platform } from "react-native";
 import * as SecureStore from "expo-secure-store";
 
