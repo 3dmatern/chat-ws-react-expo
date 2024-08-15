@@ -1,13 +1,23 @@
+import { PropsWithChildren, ReactElement } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function Button({ label, onPressFunc }: { label: any, onPressFunc: Function }) {
+type ButtonProps = {
+  style?: object,
+  styleButton?: object,
+  label?: any,
+  onPressFunc: Function,
+  children?: ReactElement
+};
+
+export default function Button({ style, styleButton, label, onPressFunc, children }: ButtonProps) {
     return (
-        <View style={styles.buttonContainer}>
+        <View style={[styles.buttonContainer, style]}>
             <Pressable
-                style={styles.button}
+                style={[styles.button, styleButton]}
                 onPress={() => onPressFunc()}
             >
-                <Text style={styles.buttonLabel}>{label}</Text>
+                {children && children}
+                {label && <Text style={styles.buttonLabel}>{label}</Text>}
             </Pressable>
         </View>
     );
