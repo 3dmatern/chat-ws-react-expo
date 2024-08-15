@@ -17,9 +17,9 @@ export default function AppLayout() {
     if (!session) {
         // В Интернете статический рендеринг будет остановлен здесь, поскольку пользователь
         // не аутентифицирован в безголовом процессе Node, в котором отображаются страницы.
-        return <Redirect href="/sign-in" />;
+        return <Redirect href="/" />;
     }
 
     // Этот макет можно отложить, поскольку он не является корневым макетом.
-    return <Stack />;
+    return <Stack screenOptions={{contentStyle: {backgroundColor: "#fff"}, header: () => null}} />;
 };

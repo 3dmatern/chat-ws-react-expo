@@ -1,3 +1,5 @@
+import { UserDetailsModel } from "./UserModel";
+
 export interface MessageCreateModel {
     authorId: string;
     created_at: string;
