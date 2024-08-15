@@ -1,7 +1,9 @@
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+
 export const authenticateUser = async (name: string) => {
     try {
         const response = await fetch(
-            "http://192.168.0.103:3000/api/user-http",
+            `${apiUrl}user-http`,
             {
                 method: "POST",
                 headers: {

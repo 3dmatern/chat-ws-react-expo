@@ -10,7 +10,7 @@ export default function Index() {
   const { signIn } = useSession();
   const [name, setName] = useState("");
   const [error, setError] = useState("");
-
+  
   return (
     <View style={styles.container}>
       <View style={styles.form}>
