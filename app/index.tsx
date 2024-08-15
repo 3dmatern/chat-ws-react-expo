@@ -2,10 +2,15 @@ import { Link } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, StyleSheet, View } from "react-native";
 
+import { useSession } from "@/context/ctx";
+
 import Button from "@/components/ui/Button";
 
 export default function Index() {
+  const { signIn } = useSession();
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
+
   return (
     <View style={styles.container}>
       <View style={styles.form}>
@@ -20,7 +25,7 @@ export default function Index() {
           onChangeText={(name) => setName(name)}
         />
 
-        <Button label="Войти в чат" onPressFunc={() => alert(`Вы ввели имя: ${name}`)} />
+        <Button label="Войти в чат" onPressFunc={() => signIn(name)} />
 
         <Text style={styles.formFooter}>
           <Text>Хотели бы увидеть код?</Text>{" "}
