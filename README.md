@@ -1,5 +1,8 @@
 # Welcome to your Expo app 👋
 
+https://docs.expo.dev/build-reference/apk/
+https://chatgpt.com/share/ddd9b64c-86a8-4f2f-bf7b-235ce9d50ab6
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
