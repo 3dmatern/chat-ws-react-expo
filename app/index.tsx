@@ -25,7 +25,7 @@ export default function Index() {
           onChangeText={(name) => setName(name)}
         />
 
-        <Button label="Войти в чат" onPressFunc={() => signIn(name)} />
+        <Button label="Войти в чат" onPressFunc={() => signIn(name.trim())} />
 
         <Text style={styles.formFooter}>
           <Text>Хотели бы увидеть код?</Text>{" "}

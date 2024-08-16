@@ -41,14 +41,18 @@ export function SessionProvider({ children }: PropsWithChildren) {
     const [[isLoading, session], setSession] = useStorageState("session");
     const [currentUser, setCurrentUser] = useState<ParseToken | null>(null);
 
+    const handleSetCurrentUser = (token: string) => {
+        try {
+            const decodedToken = jwtDecode<ParseToken>(token);
+            setCurrentUser(decodedToken);
+        } catch (error) {
+            setCurrentUser(null);
+        }
+    };
+
     useEffect(() => {
         if (session) {
-            try {
-                const decodedToken = jwtDecode<ParseToken>(session);
-                setCurrentUser(decodedToken);
-            } catch (error) {
-                setCurrentUser(null);
-            }
+            handleSetCurrentUser(session);
         }
     }, [session]);
 
@@ -56,12 +60,16 @@ export function SessionProvider({ children }: PropsWithChildren) {
         <AuthContext.Provider
             value={{
                 signIn: async (name) => {
-                    const token = await authenticateUser(name);
-                    setSession(token);
-                    router.push("/chat");
+                    if (name) {
+                        const token = await authenticateUser(name);                        
+                        setSession(token);
+                        handleSetCurrentUser(token);
+                        router.push("/chat");
+                    }
                 },
                 signOut: () => {
                     setSession(null);
+                    setCurrentUser(null);
                 },
                 session,
                 user: currentUser,

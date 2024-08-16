@@ -21,5 +21,5 @@ export default function AppLayout() {
     }
 
     // Этот макет можно отложить, поскольку он не является корневым макетом.
-    return <Stack screenOptions={{contentStyle: {backgroundColor: "#fff"}, header: () => null}} />;
+    return <Stack screenOptions={{contentStyle: {backgroundColor: "#fff"}}} />;
 };
